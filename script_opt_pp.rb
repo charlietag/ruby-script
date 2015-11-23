@@ -20,9 +20,17 @@ opt_parser = OptionParser.new do |opts|
     data.age = a
   end
 
-  opts.on("-e","--eight [height]",Integer,"What's your height") do |e|
+  opts.on("--tall [height]",Integer,"How tall are you") do |e|
     #data[:height] = e
     data.height = e
+  end
+
+  opts.separator ""
+  opts.separator "Help Options:"
+
+  opts.on("-h","--help","Show this message") do
+    puts opts
+    exit
   end
 end
 opt_parser.parse!
