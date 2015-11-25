@@ -35,4 +35,14 @@ opt_parser = OptionParser.new do |opts|
 end
 opt_parser.parse!
 puts "My name is #{data.name}. I'm #{data.age} years old. I'm in #{data.height} height."
-pp data
+my_json = %(
+  [false, 42, %w{fourty two}, {:now => #{Time.now}, :class => #{Time.now.class}, :distance => #{42e42}]
+)
+puts "========puts==========="
+puts my_json
+puts "==================="
+puts "========p==========="
+p my_json
+puts "==================="
+puts "========pp==========="
+pp my_json
