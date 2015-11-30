@@ -13,4 +13,6 @@ require 'open3'
 ##p f.readlines
 
 sin, sout, serr = Open3.popen3('ls x')
-p serr.readlines
+#p serr.readlines
+p sin.class
+p serr.class
