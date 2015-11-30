@@ -14,6 +14,9 @@ test_ls = %Q{ls}
 #----------Try Iterator-----------
 #call command can just return a string. I have to convert it into array to use iterater (Not IFS like bash)
 #Better way here is use Dir built-in Class
+puts "============="
+puts "  Iterator"
+puts "============="
 result_x_each = %x(#{test_ls})
 result_x_each = result_x_each.split(' ') # string into array, split by space. Better use 'Dir'
 result_x_each.each do |x|
@@ -22,6 +25,9 @@ end
 sep_line
 
 #----------%x-------------
+puts "============="
+puts "  %x"
+puts "============="
 result_x = %x(#{test_ls})
 puts $? #This identies fork process ID
 puts $?.pid
@@ -49,10 +55,14 @@ sep_line
 #But will return true or false to determine if the result is OK
 #Not useful as well.
 #The result can be replace by exitstatus via %x
-result = system(test_ls)
-puts result
+puts "============="
+puts "  system"
+puts "============="
+result_system = system(test_ls)
+puts result_system
 puts $?
 puts $?.pid
 puts $?.exitstatus
 puts $$
 sep_line
+
