@@ -8,13 +8,14 @@ end
 
 
 #put test script here
-test_ls = %Q{sleep 10;ls}
+#test_ls = %Q{sleep 10;ls}
+test_ls = %Q{ls}
 
 #----------Try Iterator-----------
 #call command can just return a string. I have to convert it into array to use iterater (Not IFS like bash)
 #Better way here is use Dir built-in Class
 result_x_each = %x(#{test_ls})
-result_x_each = result_x_each.split(' ')
+result_x_each = result_x_each.split(' ') # string into array, split by space. Better use 'Dir'
 result_x_each.each do |x|
   puts "File : #{x}"
 end
@@ -33,6 +34,7 @@ sep_line
 
 #=================The following fork process==============
 #----------exec ----------
+# This will not use stdout(Output anyway)
 #Notice: this will "exit" after execute the command, not really useful
 #result_exec = exec(test_ls)
 ##Note: this following will never be reached beacuse of the line above
@@ -43,7 +45,7 @@ sep_line
 #sep_line
 
 #----------system-------------
-#Notice: Just like %w or backticks, But! This will not use stdout, cannot assign it to a var
+#Notice: Just like %w or backticks, But! This will not use stdout(Output anyway), cannot assign it to a var
 #But will return true or false to determine if the result is OK
 #Not useful as well.
 #The result can be replace by exitstatus via %x
