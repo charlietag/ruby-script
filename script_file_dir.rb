@@ -17,7 +17,7 @@ class MyFile
 
   def file_attr
     file_attr = ""
-    file_attr << "---absolute_path---" 
+    file_attr << "---absolute_path---"
     file_attr << %(\n)
     file_attr << File.absolute_path(@file)
     file_attr << %(\n)
@@ -59,9 +59,16 @@ class MyFile
     puts sep
   end
 
-  def dir_entries
+  def dir_attr
     puts Dir.pwd
-    puts Dir.entries(File.dirname(@file)
+    file_dir = File.dirname(@file)
+    Dir.entries(file_dir).each do |x|
+      real_file = file_dir + '/' + x
+
+      #cannot use File.exist in if statement here, it will display . and .. because File.exist doesn't check if it's a file or not
+      #PS. dir.exist checks if it's a directory...
+      puts "FILENAME: #{file_dir} : #{x}" if File.file?(real_file)
+    end
   end
     
 end
@@ -90,8 +97,8 @@ options[:filename] = __FILE__ if options[:filename].nil?
 if ! options[:filename].nil?
   MyFile.new(options[:filename]) do |f|
     case options[:action]
-    when 'dir_entries'
-      f.dir_entries
+    when 'dir_attr'
+      f.dir_attr
     else
       f.file_attr
       f.print_sep
