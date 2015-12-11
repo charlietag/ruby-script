@@ -66,7 +66,7 @@ class MyFile
       real_file = file_dir + '/' + x
 
       #cannot use File.exist in if statement here, it will display . and .. because File.exist doesn't check if it's a file or not
-      #PS. dir.exist checks if it's a directory...
+      #PS. dir.exist checks if it's a directory... same as File.directory?(folder)
       puts "FILENAME: #{file_dir} : #{x}" if File.file?(real_file)
     end
   end
