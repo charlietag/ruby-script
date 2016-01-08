@@ -8,6 +8,7 @@ def print_sep(name)
   puts "=========================="
 end
 
+#Same as http://mechanize.rubyforge.org/GUIDE_rdoc.html
 print_sep("AGENT")
 pp Mechanize::AGENT_ALIASES
 
