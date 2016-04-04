@@ -51,6 +51,11 @@ class MyFile
     file_attr << File.extname(@file)
     file_attr << %(\n)
 
+    file_attr << "---expand_path---"
+    file_attr << %(\n)
+    file_attr << File.expand_path(@file)
+    file_attr << %(\n)
+
     puts file_attr
   end
 
