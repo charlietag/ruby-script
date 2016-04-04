@@ -76,9 +76,10 @@ end
 
 options = Hash.new
 OptionParser.new do |opt|
-  opt.on("-h", "--help", "Show this help") do |v|
-    puts opt
-  end
+  #Better do not add this option, optparse would handle help well, like it will exit after show help message
+  #opt.on("-h", "--help", "Show this help") do |v|
+  #  puts opt
+  #end
   opt.on("-v", "--[no-]verbose", "Run verbosely") do |v|
     options[:verbose] = v
   end
