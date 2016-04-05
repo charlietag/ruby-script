@@ -1,7 +1,10 @@
 #!/usr/local/bin/ruby
 file_name = File.dirname(File.realpath __FILE__) + %Q[/version.txt]
 File.open(file_name,"a") do |f|
-  f.flock(File::LOCK_EX)
+  if ! f.flock(File::LOCK_EX|File::LOCK_NB)
+    puts "This script is running by another instance!"
+    exit
+  end
   content = ""
   content << %Q[-------------------------------------]
   content << %Q[\n]
