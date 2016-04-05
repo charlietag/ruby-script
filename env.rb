@@ -1,6 +1,7 @@
 #!/usr/local/bin/ruby
 file_name = File.dirname(File.realpath __FILE__) + %Q[/version.txt]
 File.open(file_name,"a") do |f|
+  f.flock(File::LOCK_EX)
   content = ""
   content << %Q[-------------------------------------]
   content << %Q[\n]
@@ -12,5 +13,6 @@ File.open(file_name,"a") do |f|
   content << %Q[\n]
   content << %Q[\n]
   f.puts content
+  sleep 30 
 end
 
