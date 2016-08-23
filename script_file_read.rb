@@ -18,11 +18,16 @@ File.open(filename,'r') do |f|
   end
 end
 
-puts %{*********Whole Origin data With File.read method**********}
+puts %{*********Whole Origin data With IO.readlines method**********}
 content = IO.readlines(filename)
-puts content
+p content
 # or equal
 content.each do |x|
   puts x
 end
+puts %{*********Whole Origin data With IO.readlines method**********}
+
+puts %{*********Whole Origin data With File.read method**********}
+content = IO.readlines(filename)
+p content
 puts %{*********Whole Origin data With File.read method**********}
