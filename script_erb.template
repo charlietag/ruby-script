@@ -1,1 +1,3 @@
+<% if true %>
 My Name is <%= name %>
+<% end %>
