@@ -24,11 +24,11 @@ name = "haha"
 output1 = Render.new name,template_file
 puts output1.render
 puts output.render
+
+
 #----------------------------------------
 # Using without class
 #----------------------------------------
-
-
 template_file = "script_erb.template"
 template = IO.read template_file
 render3 = ERB.new template
@@ -38,3 +38,8 @@ output3 = render3.result
 puts output1.render
 puts output.render
 puts output3
+
+#----------------------------------------
+# This link would solve the binding confused issue
+# http://www.stuartellis.eu/articles/erb/#a-longer-example
+#----------------------------------------
