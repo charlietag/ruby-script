@@ -11,13 +11,12 @@ class Render
   def render
     template = IO.read @file
     render = ERB.new template
-    render.result
+    render.result binding #Add binding method for pass instance var into template
   end
 end
 template_file = "script_erb.template"
 
-name = "Charlie"
-output = Render.new name,template_file
+output = Render.new "Charlie",template_file
 puts output.render
 
 name = "haha"
@@ -42,4 +41,5 @@ puts output3
 #----------------------------------------
 # This link would solve the binding confused issue
 # http://www.stuartellis.eu/articles/erb/#a-longer-example
+# http://blog.revathskumar.com/2014/10/ruby-rendering-erb-template.html
 #----------------------------------------

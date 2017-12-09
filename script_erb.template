@@ -1,3 +1,4 @@
 <% if true %>
-My Name is <%= name %>
+My Name is <%= @name %> #===> using instance var with binding method
+<% #My Name is <%= name %> #===> using local var without binding method %>
 <% end %>
