@@ -1,4 +1,5 @@
 <% if true %>
-My Name is <%= @name %> #===> using instance var with binding method
+<% #My Name is <%= @name %> #===> using instance var with binding method %>
 <% #My Name is <%= name %> #===> using local var without binding method %>
+My Name is <%= @config[:name] %> #===> using instance var and Hash with binding method
 <% end %>

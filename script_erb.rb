@@ -3,8 +3,8 @@ require "erb"
 
 class Render
   #attr_accessor :name, :file
-  def initialize(name = "", file = __FILE__)
-    @name = name
+  def initialize(config = {}, file = __FILE__)
+    @config = config
     @file = file
   end
 
@@ -16,27 +16,44 @@ class Render
 end
 template_file = "script_erb.template"
 
-output = Render.new "Charlie",template_file
-puts output.render
+config = {
+  name: "Charlie"
+}
+output = Render.new config,template_file
+puts "First call : " + output.render
 
-name = "haha"
-output1 = Render.new name,template_file
-puts output1.render
-puts output.render
+config[:name] = "haha"
+output1 = Render.new config,template_file
+puts "Second call : " + output1.render
+puts "Third call : " + output.render
+
+#----------------------------------------
+# Result of above
+#----------------------------------------
+# ./script_erb.rb
+#First call :
+#Charlie #===> using instance var and Hash with binding method
+
+#Second call :
+#haha #===> using instance var and Hash with binding method
+
+#Third call :
+#haha #===> using instance var and Hash with binding method
 
 
 #----------------------------------------
 # Using without class
+# Comment the following because template is using Hash instance var, not local var
 #----------------------------------------
-template_file = "script_erb.template"
-template = IO.read template_file
-render3 = ERB.new template
+#template_file = "script_erb.template"
+#template = IO.read template_file
+#render3 = ERB.new template
 
-name = "output3"
-output3 = render3.result
-puts output1.render
-puts output.render
-puts output3
+#name = "output3"
+#output3 = render3.result
+#puts output1.render
+#puts output.render
+#puts output3
 
 #----------------------------------------
 # This link would solve the binding confused issue
